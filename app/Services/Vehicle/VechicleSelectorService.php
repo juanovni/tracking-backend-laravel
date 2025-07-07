@@ -38,7 +38,7 @@ class VechicleSelectorService
             $valor    = $type === 'tiempo' ? $duration : $distance;
 
             $cost_of_gasoline = 2.40;
-            $liters = ($distance / 1000) / $vehicle->mileage_per_liter;
+            $liters = ($distance / 1000) / $vehicle->km_per_liter;
             $fuel_cost = $liters * $cost_of_gasoline;
 
             $results[] = [

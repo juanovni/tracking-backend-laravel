@@ -22,7 +22,7 @@ class Vehicle extends Model
         'supplier_id',
         'number_plate',
         'weight',
-        'mileage_per_liter',
+        'km_per_liter',
         'lat',
         'lng',
         'available',
