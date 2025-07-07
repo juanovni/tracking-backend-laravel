@@ -27,7 +27,7 @@ class VechicleSelectorService
         foreach ($vehicles as $vechicle) {
             $coordinates = [
                 [$vechicle->lng, $vechicle->lat],
-                [$package->pickup_lat, $package->pickup_lng],
+                [$package->pickup_lng, $package->pickup_lat],
             ];
 
             $route = $this->ors->getRoute($coordinates, $zonasGeoJSON);
@@ -44,10 +44,10 @@ class VechicleSelectorService
             $results[] = [
                 'ruta' => $route,
                 'valor' => $valor,
-                'camion' => $vechicle,
-                'distancia' => $distance,
-                'duracion' => $duration,
-                'costo_combustible' => $fuel_cost,
+                'vechicle' => $vechicle,
+                'distance' => $distance,
+                'duration' => $duration,
+                'fuel_cost' => $fuel_cost,
             ];
         }
 

@@ -3,13 +3,13 @@
 namespace App\Services\Allocator;
 
 use App\Models\Package;
-use App\Models\Truck;
+use App\Models\Vehicle;
 
 class AllocatorService
 {
-    public function asignarCamionAlPaquete(Package $paquete)
+    public function assignTruckToPackage(Package $paquete)
     {
-        $camiones = Truck::where('available', true)->get();
+        $camiones = Vehicle::where('available', true)->get();
 
         $cercano = null;
         $menorDistancia = INF;
@@ -18,8 +18,8 @@ class AllocatorService
             $distancia = $this->calcularDistancia(
                 $camion->lat,
                 $camion->lng,
-                $paquete->lat_recogida,
-                $paquete->lng_recogida
+                $paquete->pickup_lat,
+                $paquete->pickup_lng
             );
 
             if ($distancia < $menorDistancia) {
@@ -27,7 +27,6 @@ class AllocatorService
                 $cercano = $camion;
             }
         }
-        dd($cercano);
         if ($cercano) {
            /*  $paquete->camion_id = $cercano->id;
             $paquete->save(); */

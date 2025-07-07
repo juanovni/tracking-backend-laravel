@@ -43,7 +43,7 @@ class Vehicle extends Model
         return $this->belongsTo(Supplier::class);
     }
 
-    public function type_vehicles()
+    public function type_vehicle()
     {
         return $this->belongsTo(TypeVehicle::class, 'type_vehicle_id');
     }

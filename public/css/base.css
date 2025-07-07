@@ -1,0 +1,517 @@
+.w-65 {
+    width: 65%!important;
+}
+/* input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.2rem;
+    color: #495057;
+    display: block;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0.3rem 0.85rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    width: 100%;
+} */
+
+input[type="password"]:focus {
+    background-color: #fff;
+    border-color: #9dbeee;
+    box-shadow: 0 0 0 0.2rem rgba(59,125,221,.25);
+    color: #495057;
+    outline: 0;
+}
+
+#liveIndicator {
+    height: auto;
+	width: auto;
+    min-width: 45px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: grey;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 10px;
+	position: absolute;
+    margin: 10px;
+}
+
+#liveShared{
+    margin: 45px 0px 0px 10px;
+}
+
+#liveLikes {
+    margin: 80px 0px 0px 10px;
+}
+
+#liveViews {
+    margin: 115px 0px 0px 10px;
+}
+
+div.share-likes-streaming{
+    height: auto;
+	width: auto;
+    min-width: 45px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #639;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 10px;
+	position: absolute;
+}
+
+div.status_streaming span {
+    animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#loading_streaming{
+    display: none;
+}
+
+button.sendProduct{
+    border: 1px solid;
+}
+
+#localVideo{
+    /* border: 0 !important;
+    padding: 0 !important; */
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #F1F1F2;
+}
+
+.live_product_image{
+    height: 100px;
+    width: 100px !important;
+    object-fit: cover;
+}
+
+tr.row-updated td:first-child {
+    border-radius: 15px 0 0 15px;
+}
+
+tr.row-updated td:last-child {
+    border-radius: 0 15px 15px 0;
+}
+
+table#kt_table_stores tr td:first-child,
+table#kt_table_stores tr th:first-child,
+table#kt_ecommerce_products_table tr td:first-child,
+table#kt_ecommerce_products_table tr th:first-child{
+    padding-left: 10px !important;
+}
+
+table#kt_table_stores tr td:last-child,
+table#kt_table_stores tr th:last-child,
+table#kt_ecommerce_products_table tr td:last-child,
+table#kt_ecommerce_products_table tr th:last-child{
+    padding-right: 10px !important;
+}
+
+.show_twitch_info img{
+    width: 100% !important;
+    height: auto !important;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-info-light);
+}
+
+#dashboard-loading,
+#manifest-loading{
+    display: none;
+}
+
+.role-card:hover{
+    background-color: #fff;/* #AAAAAA;*/
+    box-shadow: inset 0 0 5px #ffb600;
+}
+
+.not_visible {
+    visibility: hidden !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.text-darkorange{
+    color: #f47000;
+}
+
+#orders-loading{
+    display: none;
+}
+
+.select2-container--open .select2-results > .select2-results__options#select2-business-results {
+    max-height: 175px;
+    overflow-y: auto;
+}
+
+.osm-store-icon{
+ background-image: url(https://img.freepik.com/vector-premium/marcador-mapa-simbolo-coche_648765-5325.jpg);
+    height: 37px !important;
+    width: 32px !important;
+	margin-left: -15px !important;
+    margin-top: -16px !important;
+}
+.payphone.btn-container {
+    position: relative;
+    text-align: center;
+    border: 2px solid #D5CBC3;
+    box-sizing: border-box;
+    border-radius: 16px;
+    display: inline-block;
+    padding: 20px;
+    width: 100%;
+}
+
+.swal2-logo-paypohone {
+    border-radius: 10%;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 20px;
+}
+/* .payphone #payphone-btn, #card-btn {
+    border-color: #F1F1F2 !important;
+    border-width: 1px !important;
+    border-radius: .475rem !important;
+    text-align: center !important;
+
+}
+
+#img-card{
+    width: 60px !important;
+} */
+
+.btn{
+    font-size: 1.1rem !important;
+}
+
+.card-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+#mainMap {
+  min-height: 400px;
+}
+
+.selected-row {
+  background-color: #f7f7f7 !important;
+}
+
+.loader {
+  position: relative;
+  width: 120px;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 50px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #000000;
+  animation: loading-bounce 0.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes loading-bounce {
+  0% {
+    transform: scale(1, 0.7);
+  }
+
+  40% {
+    transform: scale(0.8, 1.2);
+  }
+
+  60% {
+    transform: scale(1, 1);
+  }
+
+  100% {
+    bottom: 60px;
+  }
+}
+
+.truck {
+  --dur: 3s;
+  display: block;
+  width: 10em;
+  height: auto;
+  justify-self: anchor-center;
+}
+.form-check-warning{
+    background-color: #f6c000;
+    border-color: #f6c000;
+}
+/* Shared animation */
+.truck__body,
+.truck__line,
+.truck__outside1,
+.truck__outside2,
+.truck__outside3,
+.truck__wheel,
+.truck__wheel-spin,
+.truck__window1,
+.truck__window2 {
+  animation: truck-body var(--dur) linear infinite;
+}
+
+.truck__body {
+  transform-origin: 17px 11px;
+}
+
+.truck__line {
+  animation-name: truck-line;
+}
+
+.truck__outside1 {
+  animation-name: truck-outside1;
+}
+
+.truck__outside2 {
+  animation-name: truck-outside2;
+}
+
+.truck__outside3 {
+  animation-name: truck-outside3;
+}
+
+.truck__wheel {
+  animation-name: truck-wheel;
+}
+
+.truck__wheel-spin {
+  animation-name: truck-wheel-spin;
+  transform-origin: 6.5px 17px;
+}
+
+.truck__wheel:nth-child(2) {
+  animation-delay: calc(var(--dur) * 0.0625);
+}
+
+.truck__wheel:nth-child(2) .truck__wheel-spin {
+  transform-origin: 27px 17px;
+}
+
+.truck__window1 {
+  animation-name: truck-window1;
+}
+
+.truck__window2 {
+  animation-name: truck-window2;
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: hsl(var(--hue), 90%, 10%);
+    --fg: hsl(var(--hue), 90%, 50%);
+  }
+}
+
+/* Animations */
+@keyframes truck-body {
+  from,
+  12.5%,
+  25%,
+  37.5%,
+  50%,
+  62.5%,
+  75%,
+  87.5%,
+  to {
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+    transform: translate(0, 0) rotate(0);
+  }
+
+  6.25%,
+  18.75%,
+  31.25%,
+  43.75%,
+  56.25%,
+  68.75%,
+  81.25%,
+  93.75% {
+    animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+    transform: translate(0, 1px) rotate(-0.75deg);
+  }
+}
+
+@keyframes truck-line {
+  from {
+    stroke-dashoffset: -18;
+  }
+  to {
+    stroke-dashoffset: 78;
+  }
+}
+
+@keyframes truck-outside1 {
+  from {
+    stroke-dashoffset: 105;
+  }
+  to {
+    stroke-dashoffset: -105;
+  }
+}
+
+@keyframes truck-outside2 {
+  from {
+    stroke-dashoffset: 168;
+  }
+  to {
+    stroke-dashoffset: -42;
+  }
+}
+
+@keyframes truck-outside3 {
+  from {
+    stroke-dashoffset: 192;
+  }
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+@keyframes truck-wheel {
+  from,
+  12.5%,
+  25%,
+  37.5%,
+  50%,
+  62.5%,
+  75%,
+  87.5%,
+  to {
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 0);
+    transform: translate(0, 0);
+  }
+
+  6.25%,
+  18.75%,
+  31.25%,
+  43.75%,
+  56.25%,
+  68.75%,
+  81.25%,
+  93.75% {
+    animation-timing-function: cubic-bezier(0.33, 1, 0.67, 1);
+    transform: translate(0, -1px);
+  }
+}
+
+@keyframes truck-wheel-spin {
+  from {
+    stroke-dashoffset: -15.71;
+    transform: rotate(0);
+  }
+  to {
+    stroke-dashoffset: 15.71;
+    transform: rotate(-4turn);
+  }
+}
+
+@keyframes truck-window1 {
+  from {
+    stroke-dashoffset: -21;
+  }
+  to {
+    stroke-dashoffset: 189;
+  }
+}
+
+@keyframes truck-window2 {
+  from {
+    stroke-dashoffset: -39;
+  }
+  to {
+    stroke-dashoffset: 171;
+  }
+}
+
+.circle-package-map {
+  background-color: black;
+  color: white;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+.circle-truck-map {
+  background-color: #45C4A0;
+  color: white;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+.circle-client-map {
+  background-color: #bcc445;
+  color: white;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+.leaflet-popup-content{
+  width: 210px !important;
+}
+
+.card-title-leaflet{
+  margin-bottom: 0px !important;
+}
