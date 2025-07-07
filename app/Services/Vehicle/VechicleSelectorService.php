@@ -24,9 +24,9 @@ class VechicleSelectorService
         $zonasGeoJSON = $this->zonas->obtenerGeoJSONMultipolygon();
 
         $results = [];
-        foreach ($vehicles as $vechicle) {
+        foreach ($vehicles as $vehicle) {
             $coordinates = [
-                [$vechicle->lng, $vechicle->lat],
+                [$vehicle->lng, $vehicle->lat],
                 [$package->pickup_lng, $package->pickup_lat],
             ];
 
@@ -38,13 +38,13 @@ class VechicleSelectorService
             $valor    = $type === 'tiempo' ? $duration : $distance;
 
             $cost_of_gasoline = 2.40;
-            $liters = ($distance / 1000) / $vechicle->mileage_per_liter;
+            $liters = ($distance / 1000) / $vehicle->mileage_per_liter;
             $fuel_cost = $liters * $cost_of_gasoline;
 
             $results[] = [
                 'ruta' => $route,
                 'valor' => $valor,
-                'vechicle' => $vechicle,
+                'vehicle' => $vehicle,
                 'distance' => $distance,
                 'duration' => $duration,
                 'fuel_cost' => $fuel_cost,

@@ -34,7 +34,6 @@
         <div class="hover-scroll me-n2" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_header, #kt_app_footer, #kt_app_hero, #kt_app_search_filter" data-kt-scroll-wrappers="#kt_app_content" data-kt-scroll-offset="35px">
             <div class="tab-content">
                 <div class="tab-pane fade" id="kt_search_results_1" role="tabpanel">
-
                 </div>
                 <div class="tab-pane fade show active" id="kt_search_results_2" role="tabpanel">
                     <div class="d-flex flex-column flex-grow-1 gap-6">
@@ -45,22 +44,31 @@
                                     <div class="d-flex flex-stack gap-2 mb-1">
                                         <i class="ki-outline ki-magnifier text-gray-500 fs-3"></i>
                                         <a href="#" class="text-primary text-hover-primary-active fw-semibold">
-                                            Paquete #{{ $d['package']->id }} </a>
+                                            Paquete #{{ $d['package']['id'] }} </a>
                                     </div>
-
-                                    <!-- <i class="ki-outline ki-heart text-danger fs-3 me-2"></i> -->
                                 </div>
-
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <i class="ki-duotone ki-car-2 fs-4 text-black">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                        <span class="path5"></span>
+                                        <span class="path6"></span>
+                                    </i>
+                                    <div class="text-gray-500">Vehículo Asignado: </div>
+                                    <div class="text-gray-700 fw-bold">{{ $d['vehicle']['number_plate'] ?? 'N/A' }}</div>
+                                </div>
                                 <div class="d-flex gap-4 mb-3 fw-semibold">
                                     <div class="d-flex align-items-center gap-1 text-gray-700">
-                                        <i class="ki-duotone ki-geolocation-home fs-3">
+                                        <i class="ki-duotone ki-geolocation-home fs-4">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                         </i>
                                         {{ round($d['distance'] / 1000, 2) }} km
                                     </div>
                                     <div class="d-flex align-items-center gap-1 text-gray-700">
-                                        <i class="ki-duotone ki-time fs-3">
+                                        <i class="ki-duotone ki-time fs-4">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                         </i>
@@ -87,7 +95,7 @@
         </div>
     </div>
     <div class="col-lg-9">
-        <div id="kt_search_map" class="card-rounded" style="width: 100%; height: 100vh;"></div>
+        <div id="kt_search_map" class="card-rounded w-100 h-100 " style="width: 100%;"></div>
     </div>
 </div>
 
@@ -128,9 +136,9 @@
     const multipolygonGeoJSON = @json($geojson);
     console.log(rutas);
     let packageId = null;
-    const map = L.map('kt_search_map').setView([-2.21147, -79.9319], 14.5); // Centrado en Guayaquil aprox
+    const map = L.map('kt_search_map').setView([-2.21147, -79.9319], 13); // Centrado en Guayaquil aprox
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19
+        maxZoom: 20
     }).addTo(map);
     const customIcon = new L.Icon({
         iconUrl: 'https://static.thenounproject.com/png/3754610-200.png',
@@ -158,15 +166,15 @@
     rutas.forEach((item, index) => {
         const iconoTruckMarker = L.divIcon({
             className: 'custom-icon-jc',
-            html: `<div class="circle-truck-map">${item.vechicle.number_plate}</div>`,
+            html: `<div class="circle-truck-map">${item.vehicle.number_plate}</div>`,
             iconSize: [42, 42],
             iconAnchor: [18, 40],
             popupAnchor: [0, -32],
         });
-        const truck = [item.vechicle.lat, item.vechicle.lng];
+        const truck = [item.vehicle.lat, item.vehicle.lng];
         L.marker(truck, {
             icon: iconoTruckMarker
-        }).addTo(map).bindPopup(`Vehículo: ${item.vechicle.number_plate}`);
+        }).addTo(map).bindPopup(`Vehículo: ${item.vehicle.number_plate}`);
 
         const coordinatePackagePickup = [item.package.pickup_lat, item.package.pickup_lng];
         const iconoPackagePickup = L.divIcon({
@@ -178,14 +186,14 @@
         });
         const marker = L.marker(coordinatePackagePickup, {
             icon: iconoPackagePickup,
-        }).addTo(map).bindPopup(`Paquete #${item.package.id}<br>Recogida: ${item.vechicle.number_plate}`);
+        }).addTo(map).bindPopup(`Paquete #${item.package.id}<br>Recogida: ${item.vehicle.number_plate}`);
 
         const encoded = item.ruta.routes[0].geometry;
         const decodedCoords = polyline.decode(encoded);
         L.polyline(decodedCoords, {
             color: 'black',
             weight: 4
-        }).addTo(map).bindPopup(`Paquete #${item.package.id}<br>Camión: ${item.vechicle.number_plate}`);
+        }).addTo(map).bindPopup(`Paquete #${item.package.id}<br>Camión: ${item.vehicle.number_plate}`);
         marker.on('click', function() {
             document.getElementById('handlerSubmit').classList.add('d-none');
             packageId = item.package.id;
@@ -257,7 +265,7 @@
                         modalBody += `
                             <tr class="cursor-pointer">
                                 <td>
-                                    <input class="form-check-input" type="radio" name="truck" value="${obj.vechicle.id}">
+                                    <input class="form-check-input" type="radio" name="truck" value="${obj.vehicle.id}">
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center me-3">
@@ -267,7 +275,7 @@
 
                                         <div class="flex-grow-1">
                                             <a href="javascript:void(0);" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Juan Constantine M.</a>
-                                            <span class="text-gray-500 fw-semibold d-block fs-6">${obj.vechicle.number_plate}</span>
+                                            <span class="text-gray-500 fw-semibold d-block fs-6">${obj.vehicle.number_plate}</span>
                                         </div>                   
                                     </div>  
                                 </td>

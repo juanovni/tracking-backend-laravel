@@ -17,7 +17,7 @@
     let markerPickup;
     let markerDelivery;
     let markerPolyline;
-    const map = L.map('kt_search_map').setView([truckJSON.lat, truckJSON.lng], 14);
+    const map = L.map('kt_search_map').setView([truckJSON.lat, truckJSON.lng], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 20
     }).addTo(map);
@@ -90,7 +90,7 @@
         if (coords.length === 2 && vehicleId != null) {
             let [lat, lng] = coords;
             const iconoTruckMarker = iconVehicleMarker(numberPlate);
-            map.setView([lat, lng], 15);
+            map.setView([lat, lng], 13);
             fetch(`routes/api/ruta/${vehicleId}`)
                 .then(res => res.json())
                 .then(data => {
@@ -109,7 +109,14 @@
                         <div class="text-muted small mb-6 mt-1">2 paradas • ${distance} km • ${duration} min</div>
                         <ul class="list-unstyled">
                             <li class="mb-3 d-flex align-items-start">
-                                <i class="bi bi-house-door-fill me-2 text-black"></i>
+                                <i class="ki-duotone ki-car-2 me-2 fs-2 text-black">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                    <span class="path5"></span>
+                                    <span class="path6"></span>
+                                </i>
                                 <div>
                                 <div class="fw-semibold">Vehículo: ${numberPlate}</div>
                                 <div class="bg-light rounded mt-1" style="height: 6px; width: 120px;"></div>

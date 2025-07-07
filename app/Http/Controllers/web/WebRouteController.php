@@ -50,6 +50,36 @@ class WebRouteController extends Controller
 
     public function batchRoutes(VechicleSelectorService $selector, ZoneService $zonas)
     {
+        /*         $datos[0]['package']['id'] = 1;
+        $datos[0]['distance'] = 22;
+        $datos[0]['duration'] = 11;
+        $datos[0]['fuel_cost'] = 21;
+
+        $datos[1]['package']['id'] = 1;
+        $datos[1]['distance'] = 22;
+        $datos[1]['duration'] = 11;
+        $datos[1]['fuel_cost'] = 21;
+
+        $datos[2]['package']['id'] = 1;
+        $datos[2]['distance'] = 22;
+        $datos[2]['duration'] = 11;
+        $datos[2]['fuel_cost'] = 21;
+
+        $datos[3]['package']['id'] = 1;
+        $datos[3]['distance'] = 22;
+        $datos[3]['duration'] = 11;
+        $datos[3]['fuel_cost'] = 21;
+
+        $datos[4]['package']['id'] = 1;
+        $datos[4]['distance'] = 22;
+        $datos[4]['duration'] = 11;
+        $datos[4]['fuel_cost'] = 21;
+
+        $datos[5]['package']['id'] = 1;
+        $datos[5]['distance'] = 22;
+        $datos[5]['duration'] = 11;
+        $datos[5]['fuel_cost'] = 21; */
+
         $datos = [];
         $packages = Package::whereNull('vehicle_id')->get(); // Truck not assigned
         foreach ($packages as $package) {
@@ -57,7 +87,7 @@ class WebRouteController extends Controller
             if (is_array($selection) && count($selection) > 0) {
                 $datos[] = [
                     'package' => $package,
-                    'vechicle' => $selection[0]['vechicle'],
+                    'vehicle' => $selection[0]['vehicle'],
                     'ruta' => $selection[0]['ruta'],
                     'distance' => $selection[0]['distance'],
                     'duration' => $selection[0]['duration'],
@@ -79,7 +109,7 @@ class WebRouteController extends Controller
             if ($selection) {
                 $data[] = [
                     'package' => $package,
-                    'vechicle' => $selection['vechicle'],
+                    'vehicle' => $selection['vehicle'],
                     'ruta' => $selection['ruta'],
                     'distance' => $selection['distance'],
                     'duration' => $selection['duration'],

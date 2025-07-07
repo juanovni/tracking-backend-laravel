@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
 Route::group(['namespace' => 'App\Http\Controllers\web'], function () {
     #SHIPPING ORDERS
     Route::group(
