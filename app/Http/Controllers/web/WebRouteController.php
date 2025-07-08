@@ -92,6 +92,7 @@ class WebRouteController extends Controller
                     'distance' => $selection[0]['distance'],
                     'duration' => $selection[0]['duration'],
                     'fuel_cost' => $selection[0]['fuel_cost'],
+                    'delivery' => $selection[0]['delivery']
                 ];
             }
         }
@@ -114,6 +115,7 @@ class WebRouteController extends Controller
                     'distance' => $selection['distance'],
                     'duration' => $selection['duration'],
                     'fuel_cost' => $selection['fuel_cost'],
+                    'delivery' => $selection['delivery']
                 ];
             }
         }

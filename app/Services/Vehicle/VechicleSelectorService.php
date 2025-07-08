@@ -30,6 +30,10 @@ class VechicleSelectorService
                 [$package->pickup_lng, $package->pickup_lat],
             ];
 
+            $totalDistance = $vehicle->deliveries->sum('distance_km');
+            $totalFuelUsed = $vehicle->km_per_liter > 0 ? $totalDistance / $vehicle->km_per_liter : 0;
+            $deliveriesCount = $vehicle->deliveries->count();
+
             $route = $this->ors->getRoute($coordinates, $zonasGeoJSON);
             if (!$route) continue;
 
@@ -48,6 +52,12 @@ class VechicleSelectorService
                 'distance' => $distance,
                 'duration' => $duration,
                 'fuel_cost' => $fuel_cost,
+                'delivery' => array(
+                    'total_km' => $totalDistance,
+                    'fuel_used_liters' => round($totalFuelUsed, 2),
+                    'deliveries' => $deliveriesCount,
+                    'fuel_per_delivery' => $deliveriesCount > 0 ? round($totalFuelUsed / $deliveriesCount, 3) : null,
+                )
             ];
         }
 

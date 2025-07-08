@@ -28,11 +28,12 @@ Route::group(['namespace' => 'App\Http\Controllers\web'], function () {
     #TRUCKS
     Route::group(
         [
-            'prefix' => '/trucks',
-            'as' => 'trucks.',
+            'prefix' => '/vehicles',
+            'as' => 'vehicles.',
         ],
         function () {
-            Route::post('/assign-truck', 'WebTruckController@assignOptimalTruck')->name('assign');
+            Route::post('/assign-truck', 'WebTruckController@assignOptimalVehicle')->name('assign');
+            Route::get('/report/fuel_efficiency', 'WebTruckController@fuelEfficiencyReport')->name('fuel_efficiency');
         }
     );
 });

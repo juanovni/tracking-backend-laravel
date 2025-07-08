@@ -58,6 +58,15 @@
                                     </i>
                                     <div class="text-gray-500">Vehículo Asignado: </div>
                                     <div class="text-gray-700 fw-bold">{{ $d['vehicle']['number_plate'] ?? 'N/A' }}</div>
+                                    <div class="min-w-125px pe-2">
+                                        @if($d['delivery']['fuel_per_delivery'] < 0.3)
+                                            <span class="badge badge-success text-white cursor-pointer" data-bs-html="true"  data-bs-toggle="tooltip" data-bs-placement="right" title="Este vehículo consume <b>{{$d['delivery']['fuel_per_delivery'] * 100}}%</b> menos combustible por entrega">Eficiente</span>
+                                            @elseif($d['delivery']['fuel_per_delivery'] < 0.6)
+                                                <span class="badge bg-warning text-white cursor-pointer" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="right" title="Este vehículo consume <b>{{$d['delivery']['fuel_per_delivery'] * 100}}%</b> combustible por entrega">Medio</span>
+                                                @else
+                                                <span class="badge bg-danger text-white cursor-pointer" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="right" title="Este vehículo consume <b>{{$d['delivery']['fuel_per_delivery'] * 100}}%</b> más combustible por entrega">Medio</span>
+                                                @endif
+                                    </div>
                                 </div>
                                 <div class="d-flex gap-4 mb-3 fw-semibold">
                                     <div class="d-flex align-items-center gap-1 text-gray-700">
@@ -261,6 +270,20 @@
                         const distance = parseFloat((obj.distance / 1000).toFixed(2));
                         const duration = parseFloat((obj.duration / 60).toFixed(2));
                         const fuelCost = number_format(obj.fuel_cost, 2);
+                        const delivery = obj.delivery.fuel_per_delivery;
+
+                        let colorDelivery = '';
+                        let labelDelivery = '';
+                        if (delivery < 0.3) {
+                            labelDelivery = 'Eficiente';
+                            colorDelivery = 'success';
+                        } else if (delivery < 0.6) {
+                            labelDelivery = 'Medio';
+                            colorDelivery = 'warning';
+                        } else {
+                            labelDelivery = 'Ineficiente';
+                            colorDelivery = 'danger';
+                        }
 
                         modalBody += `
                             <tr class="cursor-pointer">
@@ -275,7 +298,10 @@
 
                                         <div class="flex-grow-1">
                                             <a href="javascript:void(0);" class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">Juan Constantine M.</a>
-                                            <span class="text-gray-500 fw-semibold d-block fs-6">${obj.vehicle.number_plate}</span>
+                                            <div class="d-flex gap-2">
+                                                <span class="text-gray-500 fw-semibold d-block fs-6">${obj.vehicle.number_plate}</span>
+                                                <span class="badge badge-${colorDelivery} text-white">${labelDelivery}</span>
+                                            </div>
                                         </div>                   
                                     </div>  
                                 </td>
@@ -329,7 +355,7 @@
             method: "POST",
             url: "/trucks/assign-truck",
             data: {
-                'truck_id': vehicleId,
+                'vehicle_id': vehicleId,
                 'package_id': packageId,
             },
             datatype: 'json',
