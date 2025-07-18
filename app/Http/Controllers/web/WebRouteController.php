@@ -27,7 +27,7 @@ class WebRouteController extends Controller
     public function rutaJson($vehicleId, OpenRouteService $ors, ZoneService $zonas)
     {
         $vehicle = Vehicle::where('id', $vehicleId)->first();
-        $package = Package::where('id', 2)->first();
+        $package = Package::where('id', 1)->first();
 
         $coords = [
             [$vehicle->lng, $vehicle->lat],
